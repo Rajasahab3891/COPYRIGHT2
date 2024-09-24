@@ -144,7 +144,7 @@ def delete_long_messages(_, m):
 async def delete_and_reply(_, msg):
     await msg.delete()
     user_mention = msg.from_user.mention
-    await app.send_message(msg.chat.id, f"Hey {user_mention}, please keep your messages short baby securityu matters!")
+    await app.send_message(msg.chat.id, f"Hey {user_mention}, please keep your messages short baby security matters!")
     
 
 # -----------------------------------------------------------------------------------
