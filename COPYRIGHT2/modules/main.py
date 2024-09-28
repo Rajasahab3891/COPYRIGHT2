@@ -129,7 +129,7 @@ async def handle_message(client, message):
         
 # -------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------
-@app.on_edited_message(filters.group & ~filters.me)
+@app.on_edited_message
 async def delete_edited_messages(client, edited_message):
     await edited_message.delete()
 
@@ -140,7 +140,7 @@ async def delete_edited_messages(client, edited_message):
 def delete_long_messages(_, m):
     return len(m.text.split()) > 10
 
-@app.on_message(filters.group & filters.private & delete_long_messages)
+@app.on_message(delete_long_messages)
 async def delete_and_reply(_, msg):
     await msg.delete()
     user_mention = msg.from_user.mention
@@ -164,7 +164,7 @@ async def delete_pdf_files(client, message):
     else:  
         pass
 
-@app.on_message(filters.group & filters.document)
+@app.on_message
 async def message_handler(client, message):
     await delete_pdf_files(client, message)
 
