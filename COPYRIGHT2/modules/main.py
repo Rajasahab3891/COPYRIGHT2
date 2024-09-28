@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+ from pyrogram import Client, filters
 import os
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram import filters
@@ -149,12 +149,6 @@ async def delete_and_reply(_, msg):
 
 # -----------------------------------------------------------------------------------
 
-
-    
-@app.on_message(filters.animation | filters.audio | filters.document | filters.photo | filters.sticker | filters.video)
-async def keep_reaction_message(client, message: Message):
-    pass 
-# -------------------------------
 
 async def delete_pdf_files(client, message):
     if message.document and message.document.mime_type == "application/pdf":
