@@ -135,37 +135,4 @@ async def delete_edited_messages(client, edited_message):
 
 
 
-# ----------------------------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------------------------------
-def delete_long_messages(_, m):
-    return len(m.text.split()) > 10
-
-@app.on_message(filters.group & filters.private & delete_long_messages)
-async def delete_and_reply(_, msg):
-    await msg.delete()
-    user_mention = msg.from_user.mention
-    await app.send_message(msg.chat.id, f"Hey {user_mention}, please keep your messages short baby security matters!")
-    
-
-# -----------------------------------------------------------------------------------
-
-
-    
-@app.on_message(filters.animation | filters.audio | filters.document | filters.photo | filters.sticker | filters.video)
-async def keep_reaction_message(client, message: Message):
-    pass 
-# -------------------------------
-
-async def delete_pdf_files(client, message):
-    if message.document and message.document.mime_type == "application/pdf":
-        warning_message = f"@{message.from_user.username} ᴍᴀᴀ ᴍᴀᴛ ᴄʜᴜᴅᴀ ᴘᴅғ ʙʜᴇᴊ ᴋᴇ,\n ʙʜᴏsᴀᴅɪᴋᴇ ᴄᴏᴘʏʀɪɢʜᴛ ʟᴀɢʏᴇɢᴀ \n\n ᴅᴇʟᴇᴛᴇ ᴋᴀʀ ᴅɪʏᴀ ᴍᴀᴅᴀʀᴄʜᴏᴅ.\n\n ᴀʙ @rajasahab3891 ʙʜᴀɪ ᴋᴇ ᴅᴍ ᴍᴇ ᴀᴘɴɪ ᴍᴜᴍᴍʏ ᴋᴏ ʙʜᴇᴊ ᴅᴇ 🍌🍌🍌."
-        await message.reply_text(warning_message)
-        await message.delete()
-    else:  
-        pass
-
-@app.on_message(filters.group & filters.document)
-async def message_handler(client, message):
-    await delete_pdf_files(client, message)
-
-# ----------------------------------------
+# ---------------------------------------------------
